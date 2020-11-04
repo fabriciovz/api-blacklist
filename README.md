@@ -2,6 +2,8 @@
 
 To generate the black list, black list without exclude items, and just exclude items
 
+![alt text](https://github.com/fabriciovz/api-walmart/blob/master/bl_postman_photo.png?raw=true)
+
 ## Dependencies
 
 Run locally an instance of MySQL
