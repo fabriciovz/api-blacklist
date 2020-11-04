@@ -43,9 +43,7 @@ CREATE TABLE `black_list_exclude` (
 ) ENGINE=InnoDB AUTO_INCREMENT=2401 DEFAULT CHARSET=utf8;
 ```
 
-Load the black list
-
-Copy the content of bl_list.sql file 
+Load the black list from bl_list.sql file 
 
 ## Info
 
@@ -58,4 +56,4 @@ Copy the content of bl_list.sql file
 
 2.- Run locally api-blacklist
 
-3.- You can use the postman file into the root folder. bl_collection.json
+3.- Remember you have a postman collection into the root folder called: bl_generator.json

@@ -1,0 +1,104 @@
+{
+	"info": {
+		"_postman_id": "613af129-5964-4c96-b957-4bed4dce6f42",
+		"name": "Black List Generator",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "health",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/health",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"health"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "show exclude items",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/bl/show_exclude_items",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"bl",
+						"show_exclude_items"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "show black list base",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/bl/show_black_list",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"bl",
+						"show_black_list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "show black list without exclude items",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/bl/show_black_list_exclude",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"bl",
+						"show_black_list_exclude"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Excludes",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/bl/delete_excludes",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"bl",
+						"delete_excludes"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

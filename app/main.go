@@ -62,11 +62,9 @@ func createMysqlClient() *sql.DB {
 	client.SetConnMaxLifetime(time.Minute * 3)
 	//client.SetMaxOpenConns(10)
 
-	//if err = Client.Ping(); err != nil {
-	//	log.Fatal(err.Error())
-	//}
-
-	//defer client.Close()
+	if err = client.Ping(); err != nil {
+		log.Fatal(err.Error())
+	}
 
 	log.Println("database successfully configured")
 
