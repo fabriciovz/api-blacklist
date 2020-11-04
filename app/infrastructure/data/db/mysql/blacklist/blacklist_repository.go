@@ -3,12 +3,10 @@ package blacklist
 import (
 	"bitbucket.org/fabribraguev/api-toolbox/app/domain/models"
 	"database/sql"
-	"fmt"
 	"log"
 )
 
 const (
-	errorNoRows = "no rows in result set"
 	queryBlackList    = "SELECT bl.id, CONCAT('PROD_',bl.sku) sku FROM black_list as bl;"
 	queryBlackListExclude    = "SELECT bl.id, CONCAT('PROD_',bl.sku) sku FROM black_list as bl LEFT JOIN black_list_exclude as ble ON (bl.sku=ble.sku) WHERE ble.sku is NULL;"
 	queryListForExclude = "SELECT ble.id, CONCAT('PROD_',ble.sku) sku FROM black_list_exclude as ble;"
@@ -22,13 +20,14 @@ func NewBlackListMysqlRepository(client *sql.DB) *blackListMysqlRepository {
 	return &blackListMysqlRepository{client: client}
 }
 
-func (bl *blackListMysqlRepository) ShowBlackList(option string) ([]*models.BlackList, error) {
+func (bl *blackListMysqlRepository) ShowBlackList(option string) (string, error) {
 
 	var query string
+	listado := ""
 
 	query = queryBlackList
 
-	if option == "WITHEXCLUDE" {
+	if option == "WITHOUTEXCLUDE" {
 		query = queryBlackListExclude
 	}
 	if option == "FOREXCLUDE" {
@@ -39,7 +38,7 @@ func (bl *blackListMysqlRepository) ShowBlackList(option string) ([]*models.Blac
 
 	if err != nil {
 		log.Println("error when trying to prepare get user statement")
-		return nil, err
+		return listado, err
 	}
 
 	defer stmt.Close()
@@ -49,14 +48,13 @@ func (bl *blackListMysqlRepository) ShowBlackList(option string) ([]*models.Blac
 	if err != nil {
 		log.Println("error when trying to find user")
 
-		return nil, err
+		return listado, err
 	}
 
 	defer rows.Close()
 
 	results := make([]*models.BlackList,0)
 
-	listado := ""
 
 	for rows.Next() {
 
@@ -64,7 +62,7 @@ func (bl *blackListMysqlRepository) ShowBlackList(option string) ([]*models.Blac
 
 		if err := rows.Scan(&bl.ID, &bl.Sku); err != nil {
 			log.Println("error when trying to scan user")
-			return nil, err
+			return listado, err
 		}
 
 		listado += bl.Sku + ","
@@ -73,11 +71,11 @@ func (bl *blackListMysqlRepository) ShowBlackList(option string) ([]*models.Blac
 
 	}
 
-	fmt.Printf(listado)
+	//fmt.Printf(listado)
 
 	if len(results) == 0 {
-		return nil, err
+		return listado, err
 	}
 
-	return results, nil
+	return listado, nil
 }

@@ -1,7 +1,6 @@
 package blacklist
 
 import (
-	"bitbucket.org/fabribraguev/api-toolbox/app/domain/models"
 	"bitbucket.org/fabribraguev/api-toolbox/app/domain/repository"
 )
 
@@ -13,7 +12,7 @@ func NewBlackListUsecase(blackListRepository repository.BlackListRepository) *bl
 	return &blackListUsecase{blackListRepository: blackListRepository}
 }
 
-func (b *blackListUsecase) ShowBlackList(option string) ([]*models.BlackList, error) {
+func (b *blackListUsecase) ShowBlackList(option string) (string, error) {
 
 	return b.blackListRepository.ShowBlackList(option)
 }
