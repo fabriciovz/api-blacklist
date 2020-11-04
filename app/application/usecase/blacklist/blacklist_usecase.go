@@ -16,3 +16,8 @@ func (b *blackListUsecase) ShowBlackList(option string) (string, error) {
 
 	return b.blackListRepository.ShowBlackList(option)
 }
+
+func (b *blackListUsecase) DeleteExcludeItems()  error {
+
+	return b.blackListRepository.RemoveExcludeItems()
+}

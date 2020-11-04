@@ -28,7 +28,7 @@ var (
 	username = os.Getenv(mysql_users_username)
 	password = os.Getenv(mysql_users_password)
 	host     = os.Getenv(mysql_users_host) + ":" + os.Getenv(mysql_users_port)
-	schema   = "bl_db"
+	schema   = "apolo"
 )
 
 func main() {
